@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Original script by fornesia, rzengineer and fawzya 
-# Mod by Rizwan Arif Firmansyah
+# Mod by SL 
 # 
 # ==================================================
 
@@ -13,12 +13,12 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 # company name details
 country=ID
-state=KadallFamily
-locality=KadallFamily
-organization=KadallFamily
-organizationalunit=KadallFamily
-commonname=TheBigKadallFamily
-email=acill.sadank@gmail.com
+state=Semarang
+locality=JawaTengah
+organization=sulaimanssh
+organizationalunit=SLSSH
+commonname=www.hbogo.eu
+email=sulaiman.xl@facebook.com
 
 # configure rc.local
 cat <<EOF >/etc/rc.local
@@ -61,10 +61,10 @@ ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 
 # set repo
-echo 'deb http://download.webmin.com/download/repository sarge contrib' >> /etc/apt/sources.list.d/webmin.list
-wget "http://www.dotdeb.org/dotdeb.gpg"
-cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
-wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
+# echo 'deb http://download.webmin.com/download/repository sarge contrib' >> /etc/apt/sources.list.d/webmin.list
+# wget "http://www.dotdeb.org/dotdeb.gpg"
+# cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
+# wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
 
 # update
 apt-get update
@@ -108,13 +108,13 @@ apt-get -y install openvpn easy-rsa openssl
 cp -r /usr/share/easy-rsa/ /etc/openvpn
 mkdir /etc/openvpn/easy-rsa/keys
 sed -i 's|export KEY_COUNTRY="US"|export KEY_COUNTRY="ID"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="JABAR"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="PURWAKARTA"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="RizwanArifFirmansyah"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="acill.sadank@gmail.com"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="RizwanArifFirmansyah"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="RizwanArifFirmansyah"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU=changeme|export KEY_OU="RizwanArifFirmansyah" |' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="Jatim"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="Jakarta"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="SLSSH"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="slssh@gmail.com"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="SLSSH"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="SLSSH"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU=changeme|export KEY_OU="SL" |' /etc/openvpn/easy-rsa/vars
 
 # Create Diffie-Helman Pem
 openssl dhparam -out /etc/openvpn/dh2048.pem 2048
@@ -193,9 +193,9 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
 
 # install squid
-apt-get -y install squid
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/acillsadank/install/master/squid3.conf"
-sed -i $MYIP2 /etc/squid/squid.conf;
+#apt-get -y install squid
+#wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/acillsadank/install/master/squid3.conf"
+#sed -i $MYIP2 /etc/squid/squid.conf;
 
 # install webmin
 apt-get -y install webmin
